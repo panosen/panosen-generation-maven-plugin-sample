@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.panosen</groupId>
+    <artifactId>panosen-generation-maven-plugin-sample</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.panosen</groupId>
+        <artifactId>super-pom</artifactId>
+        <version>1.3.0</version>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.panosen</groupId>
+                <artifactId>super-version</artifactId>
+                <version>1.5.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.3.22</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.panosen/panosen-orm-mysql -->
+        <dependency>
+            <groupId>com.panosen</groupId>
+            <artifactId>panosen-orm-mysql</artifactId>
+            <version>0.3.2</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.panosen.plugins</groupId>
+                <artifactId>panosen-generation-maven-plugin</artifactId>
+                <version>0.2.1</version>
+                <configuration>
+                    <packageName>org.example</packageName>
+                    <databases>
+                        <database>
+                            <name>library</name>
+                            <url>jdbc:mysql://127.0.0.1:3306/library</url>
+                            <username>root</username>
+                            <password>harriszhang</password>
+                        </database>
+                    </databases>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
